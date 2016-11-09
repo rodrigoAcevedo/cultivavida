@@ -44,6 +44,9 @@ $cakeDescription = 'CakePHP: the rapid development php framework';
             <ul class="right">
                 <li><a target="_blank" href="http://book.cakephp.org/3.0/">Documentation</a></li>
                 <li><a target="_blank" href="http://api.cakephp.org/3.0/">API</a></li>
+                <li>
+                  <?= $this->Html->link('Salir', ['controller' => 'Users', 'action' => 'logout']) ?>
+                </li>
             </ul>
         </div>
     </nav>
