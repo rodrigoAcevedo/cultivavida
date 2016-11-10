@@ -33,6 +33,10 @@ class ServicesTable extends Table
         $this->table('services');
         $this->displayField('id');
         $this->primaryKey('id');
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+          'imageURL' => []
+        ]);
     }
 
     /**

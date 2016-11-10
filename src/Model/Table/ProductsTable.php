@@ -37,6 +37,11 @@ class ProductsTable extends Table
         $this->primaryKey('id');
 
         $this->addBehavior('Timestamp');
+
+        $this->addBehavior('Josegonzalez/Upload.Upload', [
+          'imageURL' => []
+        ]);
+
     }
 
     /**
@@ -68,9 +73,9 @@ class ProductsTable extends Table
             ->requirePresence('category', 'create')
             ->notEmpty('category');
 
-            $validator
-                ->requirePresence('imageURL', 'create')
-                ->notEmpty('imageURL');
+        $validator
+            ->requirePresence('imageURL', 'create')
+            ->notEmpty('imageURL');
 
         return $validator;
     }

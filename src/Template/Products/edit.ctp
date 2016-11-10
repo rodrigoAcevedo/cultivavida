@@ -14,6 +14,7 @@
             echo $this->Form->input('price');
             echo $this->Form->input('category');
             echo $this->Form->input('imageURL');
+            echo $this->Form->input('dir', ['type' => 'hidden']);
         ?>
     </fieldset>
     <?= $this->Form->button(__('Edit')) ?>
