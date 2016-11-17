@@ -27,12 +27,10 @@ class BuysController extends AppController
     $buy->idClient = $user;
     $buy->idProduct = $product['id'];
     // Todo harcodeado
-    $buy->cost = 100;
+    $buy->cost = $product['price'];
     $buy->quantity = 1;
-    //$buy->requested = function() use ($faker) { return $faker->dateTimeBetween($startDate = 'now', $endDate = 'now'); };
-    //$buy->delivered = function() use ($faker) { return $faker->dateTimeBetween($startDate = 'now', $endDate = 'now'); };
-    //$buy->requested = date("Y-m-d H:i:s");
-    //$buy->delivered = date("Y-m-d H:i:s");
+    $buy->requested = date("Y-m-d H:i:s");
+    $buy->delivered = date("Y-m-d H:i:s");
     if( $this->Buys->save($buy) )
     {
       $this->Flash->success('Has comprado con éxito!');

@@ -26,8 +26,31 @@
                         </ul>
                     </li>
                     <?php endif; ?>
-                    <li>
-                        <?= $this->Html->link('Mi lista', ['controller' => 'bookmarks', 'action' => 'index']) ?>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Productos <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li>
+                          <?= $this->Html->link('Listar productos', ['controller' => 'Products', 'action' => 'index']) ?>
+                        </li>
+                        <?php if($current_user['role'] == 'admin'): ?>
+                          <li>
+                            <?= $this->Html->link('Crear producto', ['controller' => 'Products', 'action' => 'add']) ?>
+                          </li>
+                        <?php endif; ?>
+                      </ul>
+                    </li>
+                    <li class="dropdown">
+                      <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">Servicios <span class="caret"></span></a>
+                      <ul class="dropdown-menu" role="menu">
+                        <li>
+                          <?= $this->Html->link('Listar servicios', ['controller' => 'Services', 'action' => 'index']) ?>
+                        </li>
+                        <?php if($current_user['role'] == 'admin'): ?>
+                        <li>
+                          <?= $this->Html->link('Crear servicio', ['controller' => 'Services', 'action' => 'add']) ?>
+                        </li>
+                        <?php endif; ?>
+                      </ul>
                     </li>
                 </ul>
             <ul class="nav navbar-nav navbar-right">

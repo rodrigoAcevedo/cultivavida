@@ -1,0 +1,12 @@
+.product-box {
+  min-height: 380px;
+  padding-bottom:1em;
+  margin-bottom: 2em;
+  border-bottom: 1px solid #666;
+  position: relative;
+}
+
+.product-buttons {
+  position: absolute;
+  bottom: 0.75em;
+}

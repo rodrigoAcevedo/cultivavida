@@ -1,3 +1,4 @@
+<?php if($current_user['role'] == 'admin'): ?>
 <div class="row">
   <div class="col-md-12">
     <div class="page-header">
@@ -23,11 +24,13 @@
               <td><?= h($product->name) ?></td>
               <td><?= $this->Number->format($product->price) ?></td>
               <td><?= h($product->category) ?></td>
-              <td><img src="<?php echo $product->dir . $product->imageURL ?>" width="42" height="42"></td>
+              <td><img src="<?php echo '../' . $product->dir . $product->imageURL ?>" width="42" height="42"></td>
               <td>
                 <?= $this->Html->link('Ver', ['action' => 'view', $product->id], ['class' => 'btn btn-small btn-info']) ?>
+
                 <?= $this->Html->link('Editar', ['action' => 'edit', $product->id], ['class' => 'btn btn-small btn-primary ']) ?>
                 <?= $this->Form->postLink('Borrar', ['action' => 'delete', $product->id], ['confirm' => 'Eliminar usuario?', 'class' => 'btn btn-small btn-danger']) ?>
+
               </td>
               <td><?= $this->Html->link('Comprar', ['controller' => 'Buys', 'action' => 'buy', $product->id], ['confirm' => 'Seguro quieres comprar '.$product->name.'?', 'class' => 'btn btn-small btn-success']) ?></td>
             </tr>
@@ -46,3 +49,23 @@
     </div>
   </div>
 </div>
+<?php else: ?>
+  <div class="container">
+    <div class="page-header">
+      <h2>Productos</h2>
+    </div>
+    <div class="row">
+      <?php foreach( $products as $product ): ?>
+      <div class="col-md-3 product-box">
+        <img src="<?php echo '../' . $product->dir . $product->imageURL ?>" class="img-circle img-responsive">
+        <h3><?= h($product->name) ?></h3>
+        <p><?= h($product->description) ?></p>
+        <div class="product-buttons">
+          <?= $this->Html->link('Ver', ['action' => 'view', $product->id], ['class' => 'btn btn-small btn-info']) ?>
+          <?= $this->Html->link('Comprar', ['controller' => 'Buys', 'action' => 'buy', $product->id], ['confirm' => 'Seguro quieres comprar '.$product->name.'?', 'class' => 'btn btn-small btn-success']) ?>
+        </div>
+      </div>
+      <?php endforeach; ?>
+    </div>
+  </div>
+<?php endif; ?>
