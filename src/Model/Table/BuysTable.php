@@ -56,9 +56,9 @@ class BuysTable extends Table
             ->notEmpty('idClient');
 
         $validator
-            ->integer('idService')
-            ->requirePresence('idService', 'create')
-            ->notEmpty('idService');
+            ->integer('idProduct')
+            ->requirePresence('idProduct', 'create')
+            ->notEmpty('idProduct');
 
         $validator
             ->integer('cost')
@@ -69,16 +69,6 @@ class BuysTable extends Table
             ->integer('quantity')
             ->requirePresence('quantity', 'create')
             ->notEmpty('quantity');
-
-        $validator
-            ->dateTime('requested')
-            ->requirePresence('requested', 'create')
-            ->notEmpty('requested');
-
-        $validator
-            ->dateTime('delivered')
-            ->requirePresence('delivered', 'create')
-            ->notEmpty('delivered');
 
         return $validator;
     }
