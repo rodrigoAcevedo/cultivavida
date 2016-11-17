@@ -1,41 +1,65 @@
-<nav class="large-3 medium-4 columns" id="actions-sidebar">
-    <ul class="side-nav">
-        <li class="heading"><?= __('Actions') ?></li>
-        <li><?= $this->Html->link(__('New Service'), ['action' => 'add']) ?></li>
-    </ul>
-</nav>
-<div class="services index large-9 medium-8 columns content">
-    <h3><?= __('Services') ?></h3>
-    <table cellpadding="0" cellspacing="0">
+<?php if($current_user['role'] == 'admin'): ?>
+<div class="row">
+  <div class="col-md-12">
+    <div class="page-header">
+      <h2>Servicios</h2>
+    </div>
+    <div class="table-responsive">
+      <table class="table table-striped table-hover">
         <thead>
-            <tr>
-                <th scope="col"><?= $this->Paginator->sort('id') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('type') ?></th>
-                <th scope="col"><?= $this->Paginator->sort('imageURL') ?></th>
-                <th scope="col" class="actions"><?= __('Actions') ?></th>
-            </tr>
+          <tr>
+            <th><?= $this->Paginator->sort('id') ?></th>
+            <th><?= $this->Paginator->sort('name', ['Nombre']) ?></th>
+            <th>Imagen</th>
+            <th>Acciones</th>
+            <th>Comprar</th>
+          </tr>
         </thead>
         <tbody>
-            <?php foreach ($services as $service): ?>
+          <?php foreach( $services as $service ): ?>
             <tr>
-                <td><?= $this->Number->format($service->id) ?></td>
-                <td><?= h($service->type) ?></td>
-                <td><?= h($service->imageURL) ?></td>
-                <td class="actions">
-                    <?= $this->Html->link(__('View'), ['action' => 'view', $service->id]) ?>
-                    <?= $this->Html->link(__('Edit'), ['action' => 'edit', $service->id]) ?>
-                    <?= $this->Form->postLink(__('Delete'), ['action' => 'delete', $service->id], ['confirm' => __('Are you sure you want to delete # {0}?', $service->id)]) ?>
-                </td>
+              <td><?= $this->Number->format($service->id) ?></td>
+              <td><?= h($service->name) ?></td>
+              <td><img src="<?php echo '../' . $service->dir . $service->imageURL ?>" width="42" height="42"></td>
+              <td>
+                <?= $this->Html->link('Ver', ['action' => 'view', $service->id], ['class' => 'btn btn-small btn-info']) ?>
+
+                <?= $this->Html->link('Editar', ['action' => 'edit', $service->id], ['class' => 'btn btn-small btn-primary ']) ?>
+                <?= $this->Form->postLink('Borrar', ['action' => 'delete', $service->id], ['confirm' => 'Eliminar servicio?', 'class' => 'btn btn-small btn-danger']) ?>
+
+              </td>
             </tr>
-            <?php endforeach; ?>
+          <?php endforeach; ?>
         </tbody>
-    </table>
-    <div class="paginator">
-        <ul class="pagination">
-            <?= $this->Paginator->prev('< ' . __('previous')) ?>
-            <?= $this->Paginator->numbers() ?>
-            <?= $this->Paginator->next(__('next') . ' >') ?>
-        </ul>
-        <p><?= $this->Paginator->counter() ?></p>
+      </table>
     </div>
+    <div class="paginator">
+      <ul class="pagination">
+        <?= $this->Paginator->prev('< Anterior') ?>
+        <?= $this->Paginator->numbers(['before' => '', 'after' => '']) ?>
+        <?= $this->Paginator->next('Siguiente >') ?>
+      </ul>
+      <p><?= $this->Paginator->counter() ?></p>
+    </div>
+  </div>
 </div>
+<?php else: ?>
+<div class="container">
+  <div class="page-header">
+    <h2>Servicios</h2>
+  </div>
+  <div class="row">
+    <?php foreach( $services as $service ): ?>
+    <div class="col-md-3 service-box">
+      <img src="<?php echo '../' . $service->dir . $service->imageURL ?>" class="img-circle img-responsive">
+      <h3><?= h($service->name) ?></h3>
+      <p><?= h($service->description) ?></p>
+      <div class="service-buttons">
+        <?= $this->Html->link('Ver', ['action' => 'view', $service->id], ['class' => 'btn btn-small btn-info']) ?>
+        <?= $this->Html->link('Comprar', ['controller' => 'Buys', 'action' => 'buy', $service->id], ['confirm' => 'Seguro quieres comprar '.$service->name.'?', 'class' => 'btn btn-small btn-success']) ?>
+      </div>
+    </div>
+    <?php endforeach; ?>
+  </div>
+</div>
+<?php endif; ?>

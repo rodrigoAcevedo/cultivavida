@@ -52,7 +52,7 @@ class ServicesTable extends Table
             ->allowEmpty('id', 'create');
 
         $validator
-            ->requirePresence('type', 'create')
+            ->requirePresence('name', 'create')
             ->notEmpty('type');
 
         $validator
