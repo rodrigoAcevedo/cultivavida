@@ -60,7 +60,16 @@ class ServicesController extends AppController
 
   public function delete($id = null)
   {
-    $this->request->allowMethod(['post']);
+    $this->request->allowMethod(['post', 'delete']);
+    $service = $this->Services->get($id);
+
+    if($this->Services->delete($service))
+    {
+      $this->Flash->success('El servicio ha sido dado de baja');
+    } else {
+      $this->Flash->error('No se ha podido eliminar el servicio. Intente nuevamente');
+    }
+    return $this->redirect(['action' => 'index']);
   }
 
 }

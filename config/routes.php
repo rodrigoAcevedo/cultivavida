@@ -95,6 +95,13 @@ Router::scope('/products', function($routes) {
   $routes->connect('/edit/*', ['controller' => 'Products', 'action' => 'edit']);
 });
 
+Router::scope('/services', function($routes) {
+  $routes->connect('/index', ['controller' => 'Services', 'action' => 'index']);
+  $routes->connect('/view/*', ['controller' => 'Services', 'action' => 'view']);
+  $routes->connect('/add', ['controller' => 'Services', 'action' => 'add']);
+  $routes->connect('/edit/*', ['controller' => 'Services', 'action' => 'edit']);
+});
+
 /**
  * Load all plugin routes.  See the Plugin documentation on
  * how to customize the loading of plugin routes.

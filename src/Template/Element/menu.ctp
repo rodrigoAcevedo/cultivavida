@@ -7,7 +7,7 @@
                 <span class="icon-bar"></span>
                 <span class="icon-bar"></span>
             </button>
-            <?= $this->Html->link('POCAKE', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
+            <?= $this->Html->link('Cultiva Vida', ['controller' => 'Users', 'action' => 'index'], ['class' => 'navbar-brand']) ?>
         </div>
 
         <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-2">

@@ -50,13 +50,13 @@
   </div>
   <div class="row">
     <?php foreach( $services as $service ): ?>
-    <div class="col-md-3 service-box">
+    <div class="col-md-3 product-box">
       <img src="<?php echo '../' . $service->dir . $service->imageURL ?>" class="img-circle img-responsive">
       <h3><?= h($service->name) ?></h3>
       <p><?= h($service->description) ?></p>
-      <div class="service-buttons">
+      <div class="product-buttons">
         <?= $this->Html->link('Ver', ['action' => 'view', $service->id], ['class' => 'btn btn-small btn-info']) ?>
-        <?= $this->Html->link('Comprar', ['controller' => 'Buys', 'action' => 'buy', $service->id], ['confirm' => 'Seguro quieres comprar '.$service->name.'?', 'class' => 'btn btn-small btn-success']) ?>
+        <?= $this->Html->link('Solicitar', ['controller' => 'Buys', 'action' => 'buy', $service->id], ['confirm' => 'Seguro quieres comprar '.$service->name.'?', 'class' => 'btn btn-small btn-success']) ?>
       </div>
     </div>
     <?php endforeach; ?>
