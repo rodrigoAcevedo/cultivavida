@@ -56,7 +56,7 @@
       <p><?= h($service->description) ?></p>
       <div class="product-buttons">
         <?= $this->Html->link('Ver', ['action' => 'view', $service->id], ['class' => 'btn btn-small btn-info']) ?>
-        <?= $this->Html->link('Solicitar', ['controller' => 'Buys', 'action' => 'buy', $service->id], ['confirm' => 'Seguro quieres comprar '.$service->name.'?', 'class' => 'btn btn-small btn-success']) ?>
+        <?= $this->Html->link('Solicitar', ['controller' => 'Requests', 'action' => 'request', $service->id], ['confirm' => 'Seguro quieres solicitar '.$service->name.'?', 'class' => 'btn btn-small btn-success']) ?>
       </div>
     </div>
     <?php endforeach; ?>
